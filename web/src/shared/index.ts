@@ -1,7 +1,9 @@
 // lib
 export {
   useFileSystemAccess,
-} from './lib/fileSystemAccess'
+  getArrRandomWords,
+  getCharsFromArrWords,
+} from './lib'
 
 // ui
 export { default } from './ui'
