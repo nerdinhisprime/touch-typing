@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import getWordsList from '@/feature/get-words-list';
+import { AppNav } from '@/shared';
+import GetWordsList from '@/feature/get-words-list';
+import GenerateWords from '@/feature/generate-words';
 </script>
 
 <template>
-  <nav>
-    <getWordsList />
-  </nav>
+  <AppNav>
+    <GetWordsList />
+    <GenerateWords />
+  </AppNav>
 </template>

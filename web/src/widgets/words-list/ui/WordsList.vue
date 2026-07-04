@@ -1,7 +1,9 @@
 <script setup lang="ts">
-  import GenerateWords from '@/feature/generate-words';
+  import WordsList from '@/entities/words-list';
 </script>
 
 <template>
-  <GenerateWords />
+  <div class="center">
+    <WordsList />
+  </div>
 </template>

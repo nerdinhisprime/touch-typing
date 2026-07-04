@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import AppButton, { useFileSystemAccess } from '@/shared';
-
-const { selectDirectory } = useFileSystemAccess()
+import { AppButton, useFileSystemAccess } from '@/shared';
 </script>
 
 <template>
-  <AppButton @click="selectDirectory"/>
+  <AppButton @click="useFileSystemAccess().selectDirectory"/>
 </template>

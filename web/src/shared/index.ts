@@ -1,9 +1,5 @@
 // lib
-export {
-  useFileSystemAccess,
-  getArrRandomWords,
-  getCharsFromArrWords,
-} from './lib'
+export * from './lib';
 
 // ui
-export { default } from './ui'
+export * from './ui';

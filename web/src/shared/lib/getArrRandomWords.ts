@@ -5,7 +5,7 @@ export const getArrRandomWords = (words: string[], count: number) => {
     result.push(words[Math.floor(Math.random() * words.length)]);
 
   return result;
-}
+};
 
 export const getCharsFromArrWords = (wordsArray: string[]): string[] => {
   return wordsArray.join(' ').split('');

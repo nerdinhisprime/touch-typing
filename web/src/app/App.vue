@@ -1,13 +1,7 @@
 <script setup lang="ts">
-import Main from '@/pages/main';
-import NavBar from '@/widgets/nav-bar';
+  import Main from '@/pages/main';
 </script>
 
 <template>
-  <header>
-    <NavBar />
-  </header>
-  <main>
-    <Main />
-  </main>
+  <Main />
 </template>
