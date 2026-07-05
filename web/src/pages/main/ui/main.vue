@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import WordsList from '@/widgets/words-list';
-  import NavBar from '@/widgets/nav-bar';
+  import { MainContent }from '@/widgets/main-content';
+  import { NavBar } from '@/widgets/nav-bar';
 </script>
 
 <template>
@@ -8,7 +8,7 @@
     <NavBar />
   </header>
   <main>
-    <WordsList />
+    <MainContent />
   </main>
 </template>
 

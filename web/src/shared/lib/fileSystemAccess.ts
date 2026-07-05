@@ -29,7 +29,6 @@ export const useFileSystemAccess = () => {
 
       const handle = gotRecord.descriptor
       directoryHandle.value = handle
-      //await handle.queryPermission({ mode: 'read' })
     } catch (err) { console.error(err) }
   }
 

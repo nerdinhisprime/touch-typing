@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 
 export const useAppStore = defineStore('store', () => {
-  const arrWords = ref<string[] | null>(null);
+  const arrWords = ref<string[]>([]);
 
   const generateWords = async (count = 5) => {
     try {

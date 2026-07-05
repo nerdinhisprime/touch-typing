@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import WordsList from '@/entities/words-list';
+  import { WordsList } from '@/feature/words-list';
 </script>
 
 <template>

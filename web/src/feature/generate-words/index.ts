@@ -1,1 +1,1 @@
-export { default } from './ui/GenerateWords.vue'
+export { default as GenerateWords } from './ui/GenerateWords.vue'

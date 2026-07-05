@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { useAppStore } from '@/app/store';
+import { useAppStore } from '@/feature/words-list';
 
 onMounted(() => useAppStore().generateWords());
 </script>
