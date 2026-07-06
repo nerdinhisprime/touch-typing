@@ -12,14 +12,25 @@ const currentChar = ref<string>('')
 const handleKeydown = (e: KeyboardEvent) => currentChar.value = e.key
 
 watch(currentChar, () => {
+  if(i === arrWords.value.length - 1) {
+    currentColorArr.value = ['white']
+    i = 0
+    currentChar.value = ''
+    store.generateWords()
+  }
   if(currentChar.value === arrWords.value?.[i]) {
     currentColorArr.value[i] = 'black';
     i++;
   }
   else if(currentChar.value !== arrWords.value?.[i]) {
     currentColorArr.value[i] = 'red';
-  };
+  }
 });
+watch(arrWords, () => {
+  currentColorArr.value = ['white']
+  i = 0
+  currentChar.value = ''
+})
 onMounted(async () => {
   await store.generateWords();
   for(let i1 = 0; i1 < arrWords.value.length; i1++) {
