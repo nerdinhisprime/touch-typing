@@ -4,6 +4,7 @@ import { ref } from "vue";
 
 export const useAppStore = defineStore('store', () => {
   const arrWords = ref<string[]>([]);
+  let currentLayoutLanguage: string = ''
 
   const generateWords = async (count = 5) => {
     try {
@@ -12,5 +13,15 @@ export const useAppStore = defineStore('store', () => {
       arrWords.value = getCharsFromArrWords(getArrRandomWords(data.words, count));
     } catch(err) { console.error(err) };
   };
-  return { arrWords, generateWords };
+  const loadGoalLanguage = (
+    lang: string[],
+    name: string = currentLayoutLanguage,
+    count = 5
+  ) => {
+    try {
+      arrWords.value = getCharsFromArrWords(getArrRandomWords(lang, count));
+      currentLayoutLanguage = name
+    } catch (err) { console.error(err) };
+  };
+  return { arrWords, currentLayoutLanguage, generateWords, loadGoalLanguage };
 });

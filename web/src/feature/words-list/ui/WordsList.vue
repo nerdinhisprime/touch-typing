@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useAppStore } from '@/feature/words-list';
-import { AppChar } from '@/shared';
+import { AppChar, detectKeyLayout } from '@/shared';
 import { storeToRefs } from 'pinia';
 import { onMounted, onBeforeUnmount, watch, ref } from 'vue';
 
@@ -9,8 +9,11 @@ const { arrWords } = storeToRefs(store);
 const currentColorArr = ref<Array<'red' | 'black' | 'white'>>([]);
 let i = 0;
 const currentChar = ref<string>('')
-const handleKeydown = (e: KeyboardEvent) => currentChar.value = e.key
-
+const handleKeydown = (e: KeyboardEvent) => {
+  currentChar.value = e.key
+  if (/[а-яёА-ЯЁ]/.test(e.key)) detectKeyLayout('ru')
+  else if (/[a-zA-Z]/.test(e.key)) detectKeyLayout('en')
+}
 watch(currentChar, () => {
   if(i === arrWords.value.length - 1) {
     currentColorArr.value = ['white']
