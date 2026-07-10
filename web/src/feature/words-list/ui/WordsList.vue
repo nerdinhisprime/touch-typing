@@ -1,31 +1,30 @@
 <script setup lang="ts">
-import { useAppStore } from '@/feature/words-list';
-import { AppChar, detectKeyLayout } from '@/shared';
-import { storeToRefs } from 'pinia';
 import { onMounted, onBeforeUnmount, watch, ref } from 'vue';
+import { storeToRefs } from 'pinia';
+import { useAppStore } from '@/feature/words-list';
+import { AppChar } from '@/shared';
+import { en } from '@/shared/config'
 
 const store = useAppStore();
 const { arrWords } = storeToRefs(store);
 const currentColorArr = ref<Array<'red' | 'black' | 'white'>>([]);
 let i = 0;
 const currentChar = ref<string>('')
-const handleKeydown = (e: KeyboardEvent) => {
-  currentChar.value = e.key
-  if (/[а-яёА-ЯЁ]/.test(e.key)) detectKeyLayout('ru')
-  else if (/[a-zA-Z]/.test(e.key)) detectKeyLayout('en')
-}
+const handleKeydown = (e: KeyboardEvent) => currentChar.value = e.key
+
 watch(currentChar, () => {
-  if(i === arrWords.value.length - 1) {
+  if (i === arrWords.value.length - 1) {
     currentColorArr.value = ['white']
     i = 0
     currentChar.value = ''
     store.generateWords()
-  }
-  if(currentChar.value === arrWords.value?.[i]) {
+  };
+
+  if (currentChar.value === arrWords.value?.[i]) {
     currentColorArr.value[i] = 'black';
     i++;
   }
-  else if(currentChar.value !== arrWords.value?.[i]) {
+  else if (currentChar.value !== arrWords.value?.[i]) {
     currentColorArr.value[i] = 'red';
   }
 });
@@ -34,8 +33,8 @@ watch(arrWords, () => {
   i = 0
   currentChar.value = ''
 })
-onMounted(async () => {
-  await store.generateWords();
+onMounted(() => {
+  store.setBaseSettings(en.words);
   for(let i1 = 0; i1 < arrWords.value.length; i1++) {
     currentColorArr.value[i1] = 'white';
   };

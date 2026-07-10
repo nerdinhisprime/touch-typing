@@ -21,7 +21,7 @@
         <ul>
           <li v-for="(item, index) in allLangs" :key="index">
             <AppButton
-              @click="useAppStore().loadGoalLanguage(item.words, item.name)"
+              @click="useAppStore().setBaseSettings(item.words)"
             >
               {{ item.name }}
             </AppButton>
