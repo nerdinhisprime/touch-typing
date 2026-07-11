@@ -1,10 +1,7 @@
 <script setup lang="ts">
   import { ref } from 'vue';
-  import { AppDialog, AppButton } from '@/shared';
-  import { ru, en } from '@/shared/config';
-  import { useAppStore } from '@/feature/words-list';
+  import { AppDialog } from '@/shared';
 
-  const allLangs = [ru, en]
   const dialogRef = ref<InstanceType<typeof AppDialog> | null>(null)
 
   defineExpose({
@@ -19,13 +16,7 @@
       <h3>list of languages</h3>
       <section>
         <ul>
-          <li v-for="(item, index) in allLangs" :key="index">
-            <AppButton
-              @click="useAppStore().setBaseSettings(item.words)"
-            >
-              {{ item.name }}
-            </AppButton>
-          </li>
+          <slot />
         </ul>
       </section>
     </article>
@@ -33,7 +24,5 @@
 </template>
 
 <style scoped>
-.langsList {
-  background-color: white
-}
+.langsList { background-color: white }
 </style>

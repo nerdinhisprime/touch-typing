@@ -2,6 +2,7 @@
   import { WordsList } from '@/feature/words-list';
   import { GenerateWords } from '@/feature/generate-words';
   import { ChangeLayoutLang } from '@/feature/change-layout-language';
+  import { ChangeNumberWords } from '@/feature/change-number-words';
 </script>
 
 <template>
@@ -12,6 +13,7 @@
     <div style="display: flex; gap: 10px">
       <GenerateWords />
       <ChangeLayoutLang />
+      <ChangeNumberWords />
     </div>
   </div>
 </template>

@@ -34,7 +34,7 @@ watch(arrWords, () => {
   currentChar.value = ''
 })
 onMounted(() => {
-  store.setBaseSettings(en.words);
+  store.setLanguageOfWords(en.words);
   for(let i1 = 0; i1 < arrWords.value.length; i1++) {
     currentColorArr.value[i1] = 'white';
   };

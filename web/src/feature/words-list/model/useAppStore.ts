@@ -5,16 +5,33 @@ import { ref } from "vue";
 export const useAppStore = defineStore('store', () => {
   const arrWords = ref<string[]>([]);
   const rawArrWords = ref<string[]>([])
+  const countOfWords = ref<number>(5)
 
-  const generateWords = (count: number = 5) => {
+  const generateWords = () => {
     try {
-      arrWords.value = getCharsFromArrWords(getArrRandomWords(rawArrWords.value, count));
+      arrWords.value = getCharsFromArrWords(
+        getArrRandomWords(
+          rawArrWords.value,
+          countOfWords.value
+        )
+      );
     } catch(err) { console.error(err) };
   };
 
-  const setBaseSettings = (words: string[], count = 5) => {
+  const setLanguageOfWords = (words: string[]) => {
     rawArrWords.value = words
-    generateWords(count)
+    generateWords()
   };
-  return { arrWords, rawArrWords, generateWords, setBaseSettings };
+  const setCountOfWords = (count = countOfWords.value) => {
+    countOfWords.value = count;
+    generateWords();
+  };
+  return {
+    arrWords,
+    countOfWords,
+    rawArrWords,
+    generateWords,
+    setLanguageOfWords,
+    setCountOfWords,
+  };
 });
