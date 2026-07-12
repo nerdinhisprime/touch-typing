@@ -23,7 +23,7 @@
     <li v-for="(item, index) in [ru, en]" :key="index">
       <AppButton
         @click="
-          useAppStore().setLanguageOfWords(item.words);
+          useAppStore().setLanguageOfWords(item.name);
           dialogElement?.close()
         "
       >
